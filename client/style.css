@@ -1,0 +1,15 @@
+.dumView, .statsView{
+  float: left;
+  padding: 10px;
+  background-color: gray; 
+  margin-bottom: 50px;
+}
+
+.name {
+  float: left;
+  padding: 10px; 
+}
+
+.dumImg {
+  margin-top: 100px;
+}

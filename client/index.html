@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">  
+</head>
+<body>
+
+<h1>My Little Dumpling</h1>
+<script src="lib/jquery-1.11.3.min.js"></script>
+<script src="lib/underscore-min.js"></script>
+<script src="lib/backbone-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
+<script src="dumplingModel.js"></script>
+<script src="dumplingView.js"></script>
+<script src="statsModel.js"></script>
+<script src="statsView.js"></script>
+<script type="text/javascript">
+  var dumpling1 = new Dumpling({
+    name: 'Hubert'
+  });
+  var myDumpling = new Backbone.Collection([dumpling1], {model: Dumpling});
+  var dumplingView = new DumplingView({collection: myDumpling});
+  var statsView = new StatsView({collection: myDumpling});
+    </script>
+
+</body>
+</html>
