@@ -1,7 +1,11 @@
+body {
+  font-family: 'Lucida Bright', Georgia, serif;
+}
+
 .dumView, .statsView{
   float: left;
   padding: 10px;
-  background-color: gray; 
+  background-color: #98ff98; 
   margin-bottom: 50px;
 }
 
@@ -10,6 +14,16 @@
   padding: 10px; 
 }
 
+.stats {
+  float: left;
+  padding: 5px;  
+}
+
 .dumImg {
+  margin-top: 100px;
+  margin-left: -300px;
+}
+
+svg {
   margin-top: 100px;
 }
