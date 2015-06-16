@@ -4,13 +4,13 @@ body {
   font-family: 'Berkshire Swash', 'Lucida Bright', Georgia, serif;
 }
 .header {
-  font-size: 50px;
+  font-size: 55px;
   text-align: center;
   color: white;
 }
 .headerBackground {
   background-image: url("assets/bamboo.jpg");
-  padding: 15px 0;
+  padding: 12px 0;
 }
 svg {
   margin-top: 30px;

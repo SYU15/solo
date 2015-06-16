@@ -25,9 +25,9 @@ var DumplingView = Backbone.View.extend({
     var imgEl = this.$el.children('img')[0];
     var move = function(){d3.select(imgEl)
         .style({'margin-left': '-300px'})
-        .transition().duration(2000)
+        .transition().duration(2000).ease('quad')
         .style({'margin-left':'300px'})
-        .transition().duration(2000)
+        .transition().duration(2000).ease('quad')
         .style({'margin-left':'-300px'});
       };
      move();    

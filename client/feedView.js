@@ -31,7 +31,7 @@ var FeedView = Backbone.View.extend({
       .style({'margin-left': '5px'})
       .transition().duration(1000)
       .style({'margin-left':'-5px'})
-      .style({'transform': 'scale(1.5,1.5)'})
+      .style({'transform': 'scale(1,1)'})
       .transition().duration(1000)
       .style({'transform': 'scale(0,0)'});
   },

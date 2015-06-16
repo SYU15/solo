@@ -31,7 +31,7 @@ var PlayView = Backbone.View.extend({
     d3.select(imgGame)
       .style({'margin-left': '-5px'})
       .style({'transform': 'rotateZ(0deg)'})
-      .transition().duration(1000)
+      .transition().duration(1000).ease('bounce')
       .style({'margin-left':'5px'})
       .style({'transform': 'rotateZ(180deg)'})
       .transition().duration(1000)
