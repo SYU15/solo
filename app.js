@@ -28,8 +28,8 @@ db.once('open', function () {
   exports.User = User = mongoose.model('User', userSchema);
 });
 
-app.get('/data', utils.getData);
-app.post('/data', utils.updateData);
+app.post('/data', utils.getData);
+app.post('/update', utils.updateData);
 
 app.use(express.static(__dirname + '/client'));
 
