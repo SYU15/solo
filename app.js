@@ -17,34 +17,19 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
  console.log('Mongodb connection open');
  var userSchema = mongoose.Schema({
-    username: { type: String, index: { unique: true } },
-    password: String,
     dumpling: String,
     age: Number,
     health: Number,
     intelligence: Number,
     juiciness: Number,
-    type: String
+    type: String,
+    image: String
   });
   exports.User = User = mongoose.model('User', userSchema);
-  User.comparePassword = function(candidatePassword, savedPassword, cb) {
-    bcrypt.compare(candidatePassword, savedPassword, function(err, isMatch) {
-      if (err) return cb(err);
-      cb(null, isMatch);
-    });
-  };
-
-  userSchema.pre('save', function(next){
-    var cipher = bluebird.promisify(bcrypt.hash);
-    return cipher(this.password, null, null).bind(this)
-      .then(function(hash) {
-        this.password = hash;
-        next();
-      });
-  });
 });
 
 app.get('/data', utils.getData);
+app.post('/data', utils.updateData);
 
 app.use(express.static(__dirname + '/client'));
 

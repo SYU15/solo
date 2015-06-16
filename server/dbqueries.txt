@@ -1,0 +1,5 @@
+db.users.insert({'dumpling': 'Lucy', 'age': 5, 'health': 10, 'intelligence': 20, 'juiciness': 7, 'type': 'shumai', 'image': 'assets/shumai.png'})
+
+db.users.insert({'dumpling': 'Mark', 'age': 2, 'health': 5, 'intelligence': 10, 'juiciness': 15, 'type': 'shrimp dumpling', 'image': 'assets/shrimp.png'})
+
+db.users.insert({'dumpling': 'Bunny', 'age': 1, 'health': 8, 'intelligence': 15, 'juiciness': 10, 'type': 'xiaolongbao', 'image': 'assets/dumpling.png'})

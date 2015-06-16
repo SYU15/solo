@@ -13,3 +13,6 @@ exports.getData = function(res, req){
     }
   });
 };
+exports.updateData = function(res, req){
+  console.log(req.body);
+};

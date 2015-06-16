@@ -11,6 +11,12 @@ var Dumpling = Backbone.Model.extend({
   initialize: function(){
     // this.getData();
     // this.on('update', this.setData);
+    this.on('getNew', this.retrieve);
+  },
+  retrieve: function(){
+    var newDumpling = this.get('newDum');
+    console.log(newDumpling);
+    // getData(newDumpling);
   },
   processData: function(data){
     this.set('name', data.dumpling);
@@ -21,8 +27,11 @@ var Dumpling = Backbone.Model.extend({
     this.set('type', data.type);
     this.set('image', data.image);
   },
-  getData: function(){
+  getData: function(data){
     var that = this;
+    var dataObj = {
+      'dumpling': data
+    };
    $.ajax({
       type: 'GET',
       url: 'http://localhost:8080/data',

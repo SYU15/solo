@@ -8,7 +8,7 @@ svg {
 h2:nth-child(even){
   background-color: #ffb6c1; 
 }
-h2:hover{
+h2:hover, .shumai:hover, .shrimp:hover, .xiaolongbao:hover{
   background-color: #add8e6; 
 }
 
@@ -39,4 +39,9 @@ h2:hover{
 .game, .food {
   z-index: 10;
   margin-top: 100px;
+}
+.selections {
+  padding-top: 100px;
+  padding-left: 100px;
+  width: 120px;
 }

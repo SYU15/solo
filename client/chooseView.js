@@ -4,19 +4,19 @@ var ChooseView = Backbone.View.extend({
   template: _.template('<h2 class="dumView">Home</h2> \
     <h2 class="statsView">Stats</h2><h2 class="feedView">Feed</h2> \
     <h2 class="playView">Play</h2><h2 class="chooseView">Switch Dumpling</h2> \
-    <div class="selections"><h3 class ="shumai">Lucy</h3><h3 class ="shrimp">Mark</h3> \
-    <h3 class="xiaolongbao">Bunny</h3></div>'),
+    <div class="selections"><h1 class ="shumai">Lucy</h1><h1 class ="shrimp">Mark</h1> \
+    <h1 class="xiaolongbao">Bunny</h1></div>'),
 
   events: {
     'click .statsView': 'changeToStats',
     'click .feedView': 'changeToFood',
     'click .playView': 'changeToPlay',
-    'click .dumView': 'changeToDums'
+    'click .dumView': 'changeToDums',
+    'click .shumai, .shrimp, .xiaolongbao': 'switchIt'   
   },
 
   initialize: function(){
     $('body').append(this.$el);
-    // this.collection.on('change', this.render, this);
     this.collection.on('changeChoose', this.render, this);
   },
 
@@ -28,7 +28,28 @@ var ChooseView = Backbone.View.extend({
   renderChoose: function(item) {
     this.$el.append(this.template(item.attributes));
   },
-
+  switchIt: function(ev){
+    var dumplingId = $(ev.target).text();
+    if(dumplingId === 'Lucy'){
+      this.collection.forEach(this.triggerLucy, this);
+    } else if(dumplingId === 'Mark') {
+      this.collection.forEach(this.triggerMark, this);
+    } else if (dumplingId === 'Bunny'){
+      this.collection.forEach(this.triggerBunny, this);
+    }
+  },
+  triggerMark: function(item){
+    item.set('newDum', 'Mark');
+    item.trigger('getNew');
+  },
+  triggerLucy: function(item){
+    item.set('newDum', 'Lucy');
+    item.trigger('getNew');
+  },
+  triggerBunny: function(item){
+    item.set('newDum', 'Bunny');
+    item.trigger('getNew');
+  },
   changeToStats: function(){
   this.$el.hide();
   this.collection.trigger('changeStats');
