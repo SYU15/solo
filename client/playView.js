@@ -3,8 +3,8 @@ var PlayView = Backbone.View.extend({
 
   template: _.template('<h2 class="dumView">Home</h2> \
     <h2 class="statsView">Stats</h2><h2 class="feedView">Feed</h2> \
-    <h2 class="playView">Play</h2> <img class="game" src="assets/game.png"/> \
-    <img class="playImg" src="<%= image %>"/>'),
+    <h2 class="playView">Play</h2> <img class="dumImg" src="<%= image %>"/>\
+    <img class="game" src="assets/game.png"/> '),
 
   events: {
     'click .dumView': 'changeToDums',
@@ -29,10 +29,24 @@ var PlayView = Backbone.View.extend({
     this.$el.show();
     this.$el.children().detach();
     this.collection.forEach(this.renderDumpling, this);
-    this.shouldShow.set('value', true);
+    // this.shouldShow.set('value', true);
   },
   renderDumpling: function(item) {
     this.$el.append(this.template(item.attributes));
+    this.animateGame();
+    this.animateGame();
+  },
+  animateGame: function(){
+    var imgGame = this.$el.children('img')[1];
+    d3.select(imgGame)
+      .style({'margin-left': '-5px'})
+      .style({'transform': 'rotateZ(0deg)'})
+      .transition().duration(1000)
+      .style({'margin-left':'5px'})
+      .style({'transform': 'rotateZ(180deg)'})
+      .transition().duration(1000)
+      .style({'transform': 'rotateZ(360deg)'})
+      .style({'margin-left':'-5px'});
   },
   changeToDums: function() {
     this.$el.hide();

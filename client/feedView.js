@@ -3,8 +3,8 @@ var FeedView = Backbone.View.extend({
 
   template: _.template('<h2 class="dumView">Home</h2> \
     <h2 class="statsView">Stats</h2><h2 class="feedView">Feed</h2> \
-    <h2 class="playView">Play</h2> <img class="food" src="assets/food.png"/> \
-    <img class="feedImg" src="<%= image %>"/>'),
+    <h2 class="playView">Play</h2> <img class="dumImg" src="<%= image %>"/> \
+    <img class="food" src="assets/food.png"/>'),
 
   events: {
     'click .dumView': 'changeToDums',
@@ -29,10 +29,22 @@ var FeedView = Backbone.View.extend({
     this.$el.show();
     this.$el.children().detach();
     this.collection.forEach(this.renderDumpling, this);
-    this.shouldShow.set('value', true);
+    // this.shouldShow.set('value', true);
+    this.animateFood();
   },
   renderDumpling: function(item) {
     this.$el.append(this.template(item.attributes));
+  },
+  animateFood: function(){
+    var imgFood = this.$el.children('img')[1];
+    console.log(imgFood);
+    d3.select(imgFood)
+      .style({'margin-left': '5px'})
+      .transition().duration(1000)
+      .style({'margin-left':'-5px'})
+      .style({'transform': 'scale(1.5,1.5)'})
+      .transition().duration(1000)
+      .style({'transform': 'scale(0,0)'});
   },
   changeToDums: function() {
     this.$el.hide();

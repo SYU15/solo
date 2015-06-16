@@ -2,17 +2,21 @@ body {
   font-family: 'Lucida Bright', Georgia, serif;
 }
 
-.dumView, .statsView, .feedView, .playView{
-  float: left;
-  padding: 10px;
-  background-color: #98ff98; 
-  margin-bottom: 50px;
+svg {
+  margin-top: 100px;
 }
 h2:nth-child(even){
   background-color: #ffb6c1; 
 }
 h2:hover{
   background-color: #add8e6; 
+}
+
+.dumView, .statsView, .feedView, .playView{
+  float: left;
+  padding: 10px;
+  background-color: #98ff98; 
+  margin-bottom: 50px;
 }
 .name {
   float: left;
@@ -30,9 +34,9 @@ h2:hover{
 
 .dumImg {
   margin-top: 100px;
-  margin-left: -300px;
+  /*margin-left: -300px;*/
 }
-
-svg {
+.game, .food {
+  z-index: 10;
   margin-top: 100px;
 }

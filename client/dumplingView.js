@@ -31,10 +31,9 @@ var DumplingView = Backbone.View.extend({
         .transition().duration(2000)
         .style({'margin-left':'-300px'});
       };
-      move();    
+     move();    
       setInterval(move, 4000); 
   },
-
   renderDumpling: function(item) {
     this.$el.append(this.template(item.attributes));
   },
