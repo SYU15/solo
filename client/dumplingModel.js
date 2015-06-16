@@ -10,6 +10,7 @@ var Dumpling = Backbone.Model.extend({
   },
   initialize: function(){
     // this.getData();
+    // this.on('update', this.setData);
   },
   processData: function(data){
     this.set('name', data.dumpling);
@@ -18,6 +19,7 @@ var Dumpling = Backbone.Model.extend({
     this.set('intelligence', data.intelligence);
     this.set('juiciness', data.juiciness);
     this.set('type', data.type);
+    this.set('image', data.image);
   },
   getData: function(){
     var that = this;
@@ -34,5 +36,31 @@ var Dumpling = Backbone.Model.extend({
         console.log('error');
        }
     });
+  },
+  createData: function(){
+    var dataObj = {
+      'dumpling': this.get('name'),
+      'age': this.get('age'),
+      'health': this.get('health'),
+      'intelligence': this.get('intelligence'),
+      'juiciness': this.get('juiciness'),
+      'type': this.get('type'),
+      'image': this.get('image')
+    };
+    return dataObj;
+  },
+  setData: function(){
+  var data = this.createData();
+  $.ajax({
+     type: 'POST',
+     url: 'http://localhost:8080/data',
+     data: data,
+     success: function(data) {
+       console.log('success');
+      },
+      error: function(){
+       console.log('error');
+      }
+   });
   }
 });

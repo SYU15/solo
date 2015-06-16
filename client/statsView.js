@@ -3,33 +3,34 @@ var StatsView = Backbone.View.extend({
 
   template: _.template('<h2 class="dumView">Home</h2> \
     <h2 class="statsView">Stats</h2><h2 class="feedView">Feed</h2> \
-    <h2 class="playView">Play</h2><div class="stats"><h3>Name: <%= name %> \
-    </h3><h3>Type: <%= type %></h3></div>'),
+    <h2 class="playView">Play</h2><h2 class="chooseView">Switch Dumpling</h2><div class="stats"> \
+    <h3>Name: <%= name %> </h3><h3>Type: <%= type %></h3></div>'),
 
   events: {
     'click .dumView': 'changeToDums',
     'click .feedView': 'changeToFood',
-    'click .playView': 'changeToPlay'
+    'click .playView': 'changeToPlay',
+    'click .chooseView': 'changeToChoose'
   },
-  shouldShow: {
-    value: false
-  },
+  // shouldShow: {
+  //   value: false
+  // },
   initialize: function(){
     $('body').append(this.$el);
-    this.collection.on('change', this.checkRender, this);
+    // this.collection.on('change', this.checkRender, this);
     this.collection.on('changeStats', this.render, this);
   },
-  checkRender: function(){
-    if(this.shouldShow.value){
-      this.render();
-    }
-  },
+  // checkRender: function(){
+  //   if(this.shouldShow.value){
+  //     this.render();
+  //   }
+  // },
 
   render: function() {
     this.$el.show();
     this.$el.children().detach();
     this.collection.forEach(this.renderStats, this);
-    this.shouldShow.set('value', true);
+    // this.shouldShow.set('value', true);
   },
 
   renderStats: function(item) {
@@ -37,7 +38,7 @@ var StatsView = Backbone.View.extend({
     var bardata = [item.attributes.health, item.attributes.age,
     item.attributes.juiciness, item.attributes.intelligence];
     var barvalue = ['health', 'age', 'juiciness', 'intelligence'];
-    var width = 300;
+    var width = 800;
     // var height = 400;
     var barWidth = 50;
     var barOffset = 5;
@@ -47,6 +48,8 @@ var StatsView = Backbone.View.extend({
     var height;
     d3.select(this.el)
       .append('svg')
+      .attr('height', 400)
+      .attr('width', 800)
       .selectAll('rect')
       .data(bardata)
       .enter().append('rect')
@@ -88,5 +91,9 @@ var StatsView = Backbone.View.extend({
   changeToPlay: function(){
     this.$el.hide();
     this.collection.trigger('changePlay');
+  },
+  changeToChoose: function(){
+    this.$el.hide();
+    this.collection.trigger('changeChoose');
   } 
 });

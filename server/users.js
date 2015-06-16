@@ -3,13 +3,12 @@ var bcrypt = require('bcrypt-nodejs');
 var bluebird = require('bluebird');
 
 var userSchema = mongoose.Schema({
-  username: { type: String, index: { unique: true } },
-  password: String,
   dumpling: String,
   age: Number,
   health: Number,
   intelligence: Number,
   juiciness: Number,
+  image: String,
   type: String
 });
 

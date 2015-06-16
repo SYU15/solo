@@ -3,27 +3,28 @@ var FeedView = Backbone.View.extend({
 
   template: _.template('<h2 class="dumView">Home</h2> \
     <h2 class="statsView">Stats</h2><h2 class="feedView">Feed</h2> \
-    <h2 class="playView">Play</h2> <img class="dumImg" src="<%= image %>"/> \
-    <img class="food" src="assets/food.png"/>'),
+    <h2 class="playView">Play</h2> <h2 class="chooseView">Switch Dumpling</h2> \
+    <img class="dumImg" src="<%= image %>"/><img class="food" src="assets/food.png"/>'),
 
   events: {
     'click .dumView': 'changeToDums',
     'click .statsView': 'changeToStats',
-    'click .playView': 'changeToPlay'
+    'click .playView': 'changeToPlay',
+    'click .chooseView': 'changeToChoose'
   },
-  shouldShow: {
-    value: false
-  },
+  // shouldShow: {
+  //   value: false
+  // },
   initialize: function(){
     $('body').append(this.$el);
-    this.collection.on('change', this.checkRender, this);
+    // this.collection.on('change', this.checkRender, this);
     this.collection.on('changeFood', this.render, this);
   },
-  checkRender: function(){
-    if(this.shouldShow.value){
-      this.render();
-    }
-  },
+  // checkRender: function(){
+  //   if(this.shouldShow.value){
+  //     this.render();
+  //   }
+  // },
 
   render: function() {
     this.$el.show();
@@ -31,13 +32,13 @@ var FeedView = Backbone.View.extend({
     this.collection.forEach(this.renderDumpling, this);
     // this.shouldShow.set('value', true);
     this.animateFood();
+    this.collection.forEach(this.improveHealth, this);
   },
   renderDumpling: function(item) {
     this.$el.append(this.template(item.attributes));
   },
   animateFood: function(){
     var imgFood = this.$el.children('img')[1];
-    console.log(imgFood);
     d3.select(imgFood)
       .style({'margin-left': '5px'})
       .transition().duration(1000)
@@ -45,6 +46,10 @@ var FeedView = Backbone.View.extend({
       .style({'transform': 'scale(1.5,1.5)'})
       .transition().duration(1000)
       .style({'transform': 'scale(0,0)'});
+  },
+  improveHealth: function(item){
+    item.set('health', item.get('health') + 3);
+    item.trigger('update');
   },
   changeToDums: function() {
     this.$el.hide();
@@ -57,5 +62,9 @@ var FeedView = Backbone.View.extend({
   changeToPlay: function(){
     this.$el.hide();
     this.collection.trigger('changePlay');
+  },
+  changeToChoose: function(){
+    this.$el.hide();
+    this.collection.trigger('changeChoose');
   }
 });

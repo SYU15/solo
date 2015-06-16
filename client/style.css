@@ -12,7 +12,7 @@ h2:hover{
   background-color: #add8e6; 
 }
 
-.dumView, .statsView, .feedView, .playView{
+.dumView, .statsView, .feedView, .playView, .chooseView{
   float: left;
   padding: 10px;
   background-color: #98ff98; 
