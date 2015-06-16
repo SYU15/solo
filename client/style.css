@@ -1,9 +1,8 @@
 body {
   font-family: 'Lucida Bright', Georgia, serif;
 }
-
 svg {
-  margin-top: 100px;
+  margin-top: 30px;
 }
 h2:nth-child(even){
   background-color: #ffb6c1; 

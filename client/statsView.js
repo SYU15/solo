@@ -28,41 +28,40 @@ var StatsView = Backbone.View.extend({
     var barvalue = ['health', 'age', 'juiciness', 'intelligence'];
     var width = 800;
     // var height = 400;
-    var barWidth = 50;
+    var barWidth = 100;
     var barOffset = 5;
     var colors = d3.scale.linear()
       .domain([0, d3.max(bardata)])
       .range(['#ffb832', '#c61c6f']);
-    var height;
-    d3.select(this.el)
+    var height =300;
+   var barChart = d3.select(this.el)
       .append('svg')
-      .attr('height', 400)
-      .attr('width', 800)
-      .selectAll('rect')
+      .attr('height', height)
+      .attr('width', 800);
+
+      barChart.selectAll('rect')
       .data(bardata)
       .enter().append('rect')
       .style('fill', colors)
       .attr('width', barWidth)
       .attr('height', function(d,i){
-        height = d * 10;
-        return height;
+        return d * 25 ;
       })
       .attr('x', function(d, i){
         return i * (barWidth + barOffset);
       })
       .attr('y', function(d){
-        return height - d;
+        return height - d * 25;
       });
-    d3.select('svg')
-    .selectAll('text')
+    barChart.selectAll('text')
     .data(barvalue)
     .enter().append('text')
-    .attr('font-size', '13px')
+    .attr('font-size', '20px')
     .attr('width', 100)
     .attr('x', function(d, i){
-        return i * 60;
+        return i * 110;
       })
-    .attr('y', 80)
+    .attr('y', height -10)
     .text(function(d){
       return d;
     });
