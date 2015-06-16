@@ -1,5 +1,4 @@
 var PlayView = Backbone.View.extend({
-  /* Fill out your solution here */
 
   template: _.template('<h2 class="dumView">Home</h2> \
     <h2 class="statsView">Stats</h2><h2 class="feedView">Feed</h2> \
@@ -12,25 +11,14 @@ var PlayView = Backbone.View.extend({
     'click .feedView': 'changeToFood',
     'click .chooseView': 'changeToChoose'
   },
-  // shouldShow: {
-  //   value: false
-  // },
   initialize: function(){
     $('body').append(this.$el);
-    // this.collection.on('change', this.checkRender, this);
     this.collection.on('changePlay', this.render, this);
   },
-  // checkRender: function(){
-  //   if(this.shouldShow.value){
-  //     this.render();
-  //   }
-  // },
-
   render: function() {
     this.$el.show();
     this.$el.children().detach();
     this.collection.forEach(this.renderDumpling, this);
-    // this.shouldShow.set('value', true);
     this.collection.forEach(this.improveIntelligence, this);
   },
   renderDumpling: function(item) {

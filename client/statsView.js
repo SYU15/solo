@@ -1,5 +1,4 @@
 var StatsView = Backbone.View.extend({
-  /* Fill out your solution here */
 
   template: _.template('<h2 class="dumView">Home</h2> \
     <h2 class="statsView">Stats</h2><h2 class="feedView">Feed</h2> \
@@ -12,25 +11,14 @@ var StatsView = Backbone.View.extend({
     'click .playView': 'changeToPlay',
     'click .chooseView': 'changeToChoose'
   },
-  // shouldShow: {
-  //   value: false
-  // },
   initialize: function(){
     $('body').append(this.$el);
-    // this.collection.on('change', this.checkRender, this);
     this.collection.on('changeStats', this.render, this);
   },
-  // checkRender: function(){
-  //   if(this.shouldShow.value){
-  //     this.render();
-  //   }
-  // },
-
   render: function() {
     this.$el.show();
     this.$el.children().detach();
     this.collection.forEach(this.renderStats, this);
-    // this.shouldShow.set('value', true);
   },
 
   renderStats: function(item) {
@@ -66,7 +54,6 @@ var StatsView = Backbone.View.extend({
         return height - d;
       });
     d3.select('svg')
-    // .append('svg')
     .selectAll('text')
     .data(barvalue)
     .enter().append('text')

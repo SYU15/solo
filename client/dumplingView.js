@@ -1,5 +1,4 @@
 var DumplingView = Backbone.View.extend({
-  /* Fill out your solution here */
 
   template: _.template('<h2 class="dumView">Home</h2> \
     <h2 class="statsView">Stats</h2><h2 class="feedView">Feed</h2> \
@@ -16,7 +15,6 @@ var DumplingView = Backbone.View.extend({
   initialize: function(){
     this.render();
     $('body').append(this.$el);
-    // this.collection.on('change', this.render, this);
     this.collection.on('changeDums', this.render, this);
   },
 

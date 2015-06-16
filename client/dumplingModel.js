@@ -2,20 +2,18 @@ var Dumpling = Backbone.Model.extend({
   defaults: {
     name: 'Bunny',
     image: 'assets/dumpling.jpg',
-    age: 0,
-    health: 5,
-    intelligence: 10,
-    juiciness: 15,
+    age: 1,
+    health: 8,
+    intelligence: 15,
+    juiciness: 10,
     type: 'xiaolongbao'
   },
   initialize: function(){
-    // this.getData();
     this.on('update', this.setData);
     this.on('getNew', this.retrieve);
   },
   retrieve: function(){
     var newDumpling = this.get('newDum');
-    // console.log(newDumpling);
     this.getData(newDumpling);
   },
   processData: function(data){
@@ -45,21 +43,7 @@ var Dumpling = Backbone.Model.extend({
        }
     });
   },
-  createData: function(){
-    var dataObj = {
-      'dumpling': this.get('name'),
-      'age': this.get('age'),
-      'health': this.get('health'),
-      'intelligence': this.get('intelligence'),
-      'juiciness': this.get('juiciness'),
-      'type': this.get('type'),
-      'image': this.get('image')
-    };
-    return dataObj;
-  },
   setData: function(){
-  var data = this.createData();
-  console.log(data);
   $.ajax({
      type: 'POST',
      url: 'http://localhost:8080/update',
