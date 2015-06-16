@@ -1,10 +1,15 @@
 var StatsView = Backbone.View.extend({
   /* Fill out your solution here */
 
-  template: _.template('<h2 class="dumView">Home</h2><h2 class="statsView">Stats</h2><div class="stats"><h2>Name: <%= name %></h2><h2>Type: <%= type %></h2></div>'),
+  template: _.template('<h2 class="dumView">Home</h2> \
+    <h2 class="statsView">Stats</h2><h2 class="feedView">Feed</h2> \
+    <h2 class="playView">Play</h2><div class="stats"><h3>Name: <%= name %> \
+    </h3><h3>Type: <%= type %></h3></div>'),
 
   events: {
-    'click .dumView': 'changeToDums'
+    'click .dumView': 'changeToDums',
+    'click .feedView': 'changeToFood',
+    'click .playView': 'changeToPlay'
   },
   shouldShow: {
     value: false
@@ -75,5 +80,13 @@ var StatsView = Backbone.View.extend({
   changeToDums: function() {
     this.$el.hide();
     this.collection.trigger('changeDums');
-  }
+  },
+  changeToFood: function() {
+    this.$el.hide();
+    this.collection.trigger('changeFood');
+  },
+  changeToPlay: function(){
+    this.$el.hide();
+    this.collection.trigger('changePlay');
+  } 
 });

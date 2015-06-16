@@ -2,21 +2,30 @@ body {
   font-family: 'Lucida Bright', Georgia, serif;
 }
 
-.dumView, .statsView{
+.dumView, .statsView, .feedView, .playView{
   float: left;
   padding: 10px;
   background-color: #98ff98; 
   margin-bottom: 50px;
 }
-
+h2:nth-child(even){
+  background-color: #ffb6c1; 
+}
+h2:hover{
+  background-color: #add8e6; 
+}
 .name {
   float: left;
   padding: 10px; 
 }
-
+.name:hover{
+  background-color: white;
+}
 .stats {
   float: left;
-  padding: 5px;  
+  padding: 0px 5px;
+  background-color: white;
+  margin-left: 10px;  
 }
 
 .dumImg {

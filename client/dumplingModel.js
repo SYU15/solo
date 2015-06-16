@@ -9,7 +9,7 @@ var Dumpling = Backbone.Model.extend({
     type: 'xiaolongbao'
   },
   initialize: function(){
-    this.getData();
+    // this.getData();
   },
   processData: function(data){
     this.set('name', data.dumpling);
