@@ -1,5 +1,16 @@
+@import url(http://fonts.googleapis.com/css?family=Berkshire+Swash);
+
 body {
-  font-family: 'Lucida Bright', Georgia, serif;
+  font-family: 'Berkshire Swash', 'Lucida Bright', Georgia, serif;
+}
+.header {
+  font-size: 50px;
+  text-align: center;
+  color: white;
+}
+.headerBackground {
+  background-image: url("assets/bamboo.jpg");
+  padding: 15px 0;
 }
 svg {
   margin-top: 30px;

@@ -24,7 +24,7 @@ db.once('open', function () {
     type: String,
     image: String
   });
-  exports.User = User = mongoose.model('User', userSchema);
+  module.exports.User = User = mongoose.model('User', userSchema);
 });
 
 app.post('/data', utils.getData);

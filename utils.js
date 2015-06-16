@@ -16,7 +16,6 @@ exports.getData = function(res, req){
   });
 };
 exports.updateData = function(res, req){
-  console.log(res.body.name);
   User.User.update({'dumpling': res.body.name}, 
     { $set: { 'age': res.body.age, 'health': res.body.health, 
   'intelligence': res.body.intelligence, 'juiciness': res.body.juiciness,
