@@ -1,9 +1,13 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var bcrypt = require('bcrypt-nodejs');
+var utils = require('./utils.js');
+var partials = require('express-partials');
 // var db = require('server/config.js');
 
 var app = express();
-
+app.use(partials());
+app.use(express.bodyParser());
 var mongoURI = 'mongodb://localhost/test';
 mongoose.connect(mongoURI);
 
@@ -22,7 +26,7 @@ db.once('open', function () {
     juiciness: Number,
     type: String
   });
-  var User = mongoose.model('User', userSchema);
+  exports.User = User = mongoose.model('User', userSchema);
   User.comparePassword = function(candidatePassword, savedPassword, cb) {
     bcrypt.compare(candidatePassword, savedPassword, function(err, isMatch) {
       if (err) return cb(err);
@@ -38,9 +42,9 @@ db.once('open', function () {
         next();
       });
   });
-  module.exports = User;
 });
 
+app.get('/data', utils.getData);
 
 app.use(express.static(__dirname + '/client'));
 

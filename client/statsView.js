@@ -6,17 +6,25 @@ var StatsView = Backbone.View.extend({
   events: {
     'click .dumView': 'changeToDums'
   },
-
+  shouldShow: {
+    value: false
+  },
   initialize: function(){
     $('body').append(this.$el);
-    this.collection.on('change', this.render, this);
+    this.collection.on('change', this.checkRender, this);
     this.collection.on('changeStats', this.render, this);
+  },
+  checkRender: function(){
+    if(this.shouldShow.value){
+      this.render();
+    }
   },
 
   render: function() {
     this.$el.show();
     this.$el.children().detach();
     this.collection.forEach(this.renderStats, this);
+    this.shouldShow.set('value', true);
   },
 
   renderStats: function(item) {
