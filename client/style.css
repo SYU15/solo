@@ -19,7 +19,8 @@ h2:nth-child(even){
   background-color: #ffb6c1; 
 }
 h2:hover, .shumai:hover, .shrimp:hover, .xiaolongbao:hover{
-  background-color: #add8e6; 
+  background-color: #add8e6;
+  cursor: pointer; 
 }
 
 .dumView, .statsView, .feedView, .playView, .chooseView{
