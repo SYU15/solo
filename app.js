@@ -34,4 +34,4 @@ app.post('/update', utils.updateData);
 
 app.use(express.static(__dirname + '/client'));
 
-app.listen(8080);
+app.listen(port);
