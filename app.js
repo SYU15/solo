@@ -4,11 +4,13 @@ var bcrypt = require('bcrypt-nodejs');
 var utils = require('./utils.js');
 var partials = require('express-partials');
 // var db = require('server/config.js');
-
+var URI = process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL || 'mongodb://localhost/test';
+var port = process.env.PORT || 8080;
 var app = express();
 app.use(partials());
 app.use(express.bodyParser());
-var mongoURI = 'mongodb://localhost/test';
+var mongoURI = URI;
 mongoose.connect(mongoURI);
 
 var db = mongoose.connection;
